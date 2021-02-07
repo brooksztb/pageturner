@@ -7,15 +7,24 @@ module.exports = {
           : 'http://localhost:8888/'
     }
   },
+  server: {
+    // host: 0, //set to active to test pwa/mobile
+    port: 8888
+  },
   /*
    ** Headers of the page
    */
   head: {
-    title: 'Pageturner: Track your Reading Habits',
+    title: 'Pageturner - Track Reading Habits',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Nuxt.js project' }
+      {
+        hid: 'description',
+        name: 'description',
+        content:
+          'Pageturner is a web app to help you track your reading habits and give your rough estimates to how long it will take to finish books.'
+      }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
@@ -46,5 +55,12 @@ module.exports = {
   buildModules: ['@nuxtjs/tailwindcss', '@nuxtjs/pwa'],
 
   //module configs
-  pwa: {}
+  pwa: {
+    manifest: {
+      name: 'Pageturner - Track Reading Habits'
+    },
+    meta: {
+      appleStatusBarStyle: 'black-translucent'
+    }
+  }
 }
