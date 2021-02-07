@@ -33,6 +33,7 @@ module.exports = {
       }
     }
   },
+  target: 'static',
   buildModules: ['@nuxtjs/tailwindcss', '@nuxtjs/pwa'],
 
   //module configs
