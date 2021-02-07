@@ -1,4 +1,12 @@
 module.exports = {
+  publicRuntimeConfig: {
+    axios: {
+      baseURL:
+        process.env.NODE_ENV === 'production'
+          ? process.env.BASE_URL || 'http://localhost:8888/'
+          : 'http://localhost:8888/'
+    }
+  },
   /*
    ** Headers of the page
    */
@@ -34,6 +42,7 @@ module.exports = {
     }
   },
   target: 'static',
+  modules: ['@nuxtjs/axios'],
   buildModules: ['@nuxtjs/tailwindcss', '@nuxtjs/pwa'],
 
   //module configs
