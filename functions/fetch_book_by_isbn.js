@@ -5,7 +5,7 @@ exports.handler = async event => {
     secret: process.env.FAUNA_SECRET_KEY
   })
 
-  const { isbn, title, author } = event.queryStringParameters
+  const { isbn } = event.queryStringParameters
   if (!isbn) {
     return {
       statusCode: 400,
@@ -22,7 +22,7 @@ exports.handler = async event => {
   if (!doesDocExist) {
     await client.query(
       q.Create(q.Collection('books'), {
-        data: { isbn: isbn, title: title, author: author, entries: [] }
+        data: { isbn: isbn, title: '', author: '', entries: [] }
       })
     )
   }

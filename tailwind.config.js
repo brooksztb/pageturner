@@ -14,7 +14,29 @@ module.exports = {
       'accent-3': 'var(--accent-3)',
       'white': 'var(--white)'
     },
-    extend: {}
+    extend: {
+      spacing: {
+        '300px': '300px',
+        '400px': '400px',
+        '1/2': '50%'
+      },
+      minHeight: {
+        '300px': '300px'
+      },
+      maxWidth: {
+        '400px': '400px'
+      },
+      backgroundPosition: {
+        'none-none': '0% 0%',
+        'half-none': '50% 0%'
+      },
+      backgroundImage: {
+        'book-gradient-to-r':
+          'linear-gradient(to right, rgba(245, 154, 0,.2) 0%,rgba(33,33,32,1) 60%,rgba(33,33,32,1) 100%)',
+        'book-gradient-to-b':
+          'linear-gradient(to bottom, rgba(245, 154, 0,.2) 0%,rgba(33,33,32,1) 60%,rgba(33,33,32,1) 100%)'
+      }
+    }
   },
   variants: {},
   plugins: [],

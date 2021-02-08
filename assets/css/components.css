@@ -1,0 +1,23 @@
+.book-card {
+  @apply bg-cover bg-no-repeat bg-half-none w-full h-400px min-h-300px block relative shadow rounded-lg;
+  @screen sm {
+    @apply bg-contain bg-none-none h-full;
+  }
+  &.overlay {
+    @apply h-full rounded-lg absolute inset-0 bg-book-gradient-to-b;
+    background-blend-mode: multiply;
+    @screen sm {
+      @apply bg-book-gradient-to-r;
+    }
+  }
+
+  &.content {
+    @apply w-full flex flex-col items-start relative float-right pb-4 pr-5 mt-16 max-w-full;
+    @screen sm {
+      @apply w-1/2 max-w-400px;
+    }
+    @screen lg {
+      @apply w-full;
+    }
+  }
+}
