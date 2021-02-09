@@ -5,10 +5,15 @@ exports.handler = async event => {
     secret: process.env.FAUNA_SECRET_KEY
   })
 
-  const documents = await client
-    .query(q.Get(q.Match(q.Index('all_books'))))
+  const allBooks = await client
+    .query(
+      q.Map(
+        q.Paginate(q.Documents(q.Collection('books')), { size: 1000 }),
+        q.Lambda(x => q.Get(x))
+      )
+    )
     .then(documents => {
-      return documents.map(document => {
+      return documents.data.map(document => {
         return {
           title: document.data.title,
           author: document.data.author,
@@ -21,6 +26,6 @@ exports.handler = async event => {
 
   return {
     statusCode: 200,
-    body: JSON.stringify(documents)
+    body: JSON.stringify({ allBooks })
   }
 }
