@@ -38,7 +38,7 @@
       <div class="flex items-end w-full">
         <nuxt-link
           class="px-4 py-2 text-white border-2 border-white hover:text-secondary hover:border-secondary"
-          to="/"
+          :to="bookUrl"
           >View Book Info</nuxt-link
         >
       </div>
@@ -47,6 +47,8 @@
 </template>
 
 <script>
+import { slugify } from '~/utils/slugify.js'
+
 export default {
   props: {
     book: Object
@@ -79,6 +81,10 @@ export default {
     },
     isReading() {
       return this.completedPages > 0 && !this.isCompleted ? true : false
+    },
+    bookUrl() {
+      const text = `${this.book.title} ${this.book.author}`
+      return `/books/${slugify(text)}`
     }
   }
 }
