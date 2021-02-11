@@ -9,7 +9,6 @@ module.exports = {
   },
   server: {
     // host: 0, //set to active to test pwa/mobile
-    port: 8888
   },
   /*
    ** Headers of the page
@@ -31,7 +30,7 @@ module.exports = {
   /*
    ** Customize the progress bar color
    */
-  loading: { color: '#3B8070' },
+  loading: { color: '#f59a00' },
   /*
    ** Build configuration
    */
@@ -52,9 +51,15 @@ module.exports = {
   },
   target: 'static',
   modules: ['@nuxtjs/axios'],
-  buildModules: ['@nuxtjs/tailwindcss', '@nuxtjs/pwa'],
+  buildModules: ['@nuxtjs/tailwindcss', '@nuxtjs/pwa', '@nuxtjs/fontawesome'],
 
   //module configs
+  fontawesome: {
+    component: 'fa',
+    icons: {
+      solid: ['faBook', 'faBookOpen']
+    }
+  },
   pwa: {
     manifest: {
       name: 'Pageturner - Track Reading Habits'

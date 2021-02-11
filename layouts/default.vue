@@ -1,9 +1,9 @@
 <template>
-  <div class="bg-primary text-white min-h-screen">
+  <div class="min-h-screen text-white bg-primary">
     <the-header />
-    <main class="max-w-6xl py-8">
-      <div class="px-4 mx-auto sm:px-6 lg:px-8">
-        <nuxt />
+    <main id="content" class="relative py-8">
+      <div class="max-w-6xl px-4 mx-auto sm:px-6 lg:px-8">
+        <nuxt keep-alive />
       </div>
     </main>
   </div>
