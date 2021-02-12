@@ -1,12 +1,13 @@
 <template>
   <div
     class="relative block w-full my-4 bg-no-repeat bg-cover rounded-lg shadow-md bg-half-none h-400px min-h-300px"
+    :style="{ backgroundImage: `url(${book.thumbnail})` }"
   >
     <div
-      class="absolute inset-0 h-full rounded-lg bg-book-gradient-to-b bg-blend-multiply"
+      class="absolute inset-0 w-full h-full rounded-lg bg-book-gradient-to-b bg-blend-multiply"
     ></div>
     <div
-      class="relative flex flex-col items-start float-right w-full max-w-full p-4 pt-0 mt-32"
+      class="relative z-10 flex flex-col items-start float-right w-full max-w-full p-4 pt-0 mt-32"
     >
       <div class="w-full mb-8">
         <h1 class="text-4xl text-secondary">{{ book.title }}</h1>
@@ -36,9 +37,7 @@
         <span></span>
       </div>
       <div class="flex items-end w-full">
-        <nuxt-link
-          class="px-4 py-2 text-white border-2 border-white hover:text-secondary hover:border-secondary"
-          :to="bookUrl"
+        <nuxt-link class="pageturner-button" :to="bookUrl"
           >View Book Info</nuxt-link
         >
       </div>

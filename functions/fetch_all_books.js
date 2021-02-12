@@ -14,13 +14,7 @@ exports.handler = async event => {
     )
     .then(documents => {
       return documents.data.map(document => {
-        return {
-          title: document.data.title,
-          author: document.data.author,
-          isbn: document.data.isbn,
-          pageCount: document.data.pageCount,
-          entries: document.data.entries
-        }
+        return document.data
       })
     })
 

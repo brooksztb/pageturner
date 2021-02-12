@@ -51,8 +51,13 @@ module.exports = {
   },
   target: 'static',
   modules: ['@nuxtjs/axios'],
-  buildModules: ['@nuxtjs/tailwindcss', '@nuxtjs/pwa', '@nuxtjs/fontawesome'],
-
+  buildModules: [
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/pwa',
+    '@nuxtjs/fontawesome',
+    '@nuxtjs/dotenv'
+  ],
+  plugins: ['~/plugins/booksApi.js'],
   //module configs
   fontawesome: {
     component: 'fa',

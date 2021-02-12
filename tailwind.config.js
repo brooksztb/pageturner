@@ -32,9 +32,9 @@ module.exports = {
       },
       backgroundImage: {
         'book-gradient-to-r':
-          'linear-gradient(to right, rgba(245, 154, 0,.2) 0%,rgba(33,33,32,1) 60%,rgba(33,33,32,1) 100%)',
+          'linear-gradient(to right, rgba(245, 154, 0,.2) 0%, #212120 60%, #212120 100%)',
         'book-gradient-to-b':
-          'linear-gradient(to bottom, rgba(245, 154, 0,.2) 0%,rgba(33,33,32,1) 60%,rgba(33,33,32,1) 100%)'
+          'linear-gradient(to bottom, rgba(245, 154, 0,.2) 0%, #212120 60%, #212120 100%)'
       }
     }
   },
