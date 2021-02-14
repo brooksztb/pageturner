@@ -11,7 +11,7 @@
     >
       <div class="w-full mb-8">
         <h1 class="text-4xl text-secondary">{{ book.title }}</h1>
-        <h4 class="text-lg text-white">{{ book.author }}</h4>
+        <h4 class="text-lg text-white">{{ authors }}</h4>
         <div class="flex justify-between">
           <span class="text-white opacity-75 text-md"
             >{{ completedPages }}/{{ book.pageCount }} Pages</span
@@ -82,8 +82,11 @@ export default {
       return this.completedPages > 0 && !this.isCompleted ? true : false
     },
     bookUrl() {
-      const text = `${this.book.title} ${this.book.author}`
+      const text = `${this.book.title} ${this.book.authors.join(', ')}`
       return `/books/${slugify(text)}`
+    },
+    authors() {
+      return this.book.authors.join(', ')
     }
   }
 }

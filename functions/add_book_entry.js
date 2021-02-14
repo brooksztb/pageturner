@@ -5,7 +5,7 @@ exports.handler = async event => {
     secret: process.env.FAUNA_SECRET_KEY
   })
 
-  const { isbn, title, author, entry } = event.queryStringParameters
+  const { isbn, entry } = event.queryStringParameters
   if (!isbn) {
     return {
       statusCode: 400,
@@ -20,11 +20,12 @@ exports.handler = async event => {
   )
 
   if (!doesDocExist) {
-    await client.query(
-      q.Create(q.Collection('books'), {
-        data: { isbn: isbn, title: title, author: author, entries: [] }
+    return {
+      statusCode: 400,
+      body: JSON.stringify({
+        message: 'Book does not exist in database'
       })
-    )
+    }
   }
 
   const document = await client.query(

@@ -12,9 +12,13 @@ module.exports = {
       'accent-1': 'var(--accent-1)',
       'accent-2': 'var(--accent-2)',
       'accent-3': 'var(--accent-3)',
-      'white': 'var(--white)'
+      'white': 'var(--white)',
+      'transparent': 'transparent'
     },
     extend: {
+      zIndex: {
+        '100': '100'
+      },
       spacing: {
         '300px': '300px',
         '400px': '400px',
@@ -32,9 +36,12 @@ module.exports = {
       },
       backgroundImage: {
         'book-gradient-to-r':
-          'linear-gradient(to right, rgba(245, 154, 0,.2) 0%, #212120 60%, #212120 100%)',
+          'linear-gradient(to right, rgba(245, 154, 0,.2) 0%, #191919 60%, #191919 100%)',
         'book-gradient-to-b':
-          'linear-gradient(to bottom, rgba(245, 154, 0,.2) 0%, #212120 60%, #212120 100%)'
+          'linear-gradient(to bottom, rgba(245, 154, 0,.2) 0%, #191919 60%, #191919 100%)'
+      },
+      transition: {
+        'border-color': 'border-color'
       }
     }
   },

@@ -20,23 +20,22 @@ exports.handler = async event => {
   )
 
   if (!doesDocExist) {
-    await client.query(
-      q.Create(q.Collection('books'), {
-        data: { isbn: isbn, title: '', author: '', entries: [] }
+    return {
+      statusCode: 400,
+      body: JSON.stringify({
+        message: 'Book does not exist in database'
       })
-    )
+    }
   }
 
-  const document = await client.query(
-    q.Get(q.Match(q.Index('books_by_isbn'), isbn))
-  )
+  const book = await client
+    .query(q.Get(q.Match(q.Index('books_by_isbn'), isbn)))
+    .then(document => {
+      return document.data
+    })
 
   return {
     statusCode: 200,
-    body: JSON.stringify({
-      title: document.data.title,
-      author: document.data.author,
-      isbn: document.data.isbn
-    })
+    body: JSON.stringify({ book })
   }
 }
