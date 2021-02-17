@@ -16,6 +16,17 @@ export const actions = {
     if (allBooks && allBooks.length > 0) {
       commit('SET_BOOKS', allBooks)
     }
+  },
+  async addNewBook({ commit }, book) {
+    const response = await this.$axios.$post(
+      '/.netlify/functions/add_book',
+      book
+    )
+
+    if (response && response.addedBook) {
+      commit('ADD_BOOK', response.addedBook)
+      return response.message
+    }
   }
 }
 

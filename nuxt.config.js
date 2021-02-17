@@ -62,7 +62,8 @@ module.exports = {
   fontawesome: {
     component: 'fa',
     icons: {
-      solid: ['faBook', 'faBookOpen', 'faHome']
+      solid: ['faBook', 'faBookOpen', 'faHome', 'faPlusSquare', 'faTimes'],
+      regular: ['faCheckSquare']
     }
   },
   pwa: {

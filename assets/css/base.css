@@ -5,7 +5,7 @@ body {
   --accent-2: #d4690d;
   --accent-3: #c45114;
   --white: #f9f9f9;
-}
-
-a {
+  --black: #191919;
+  --red: #e53e3e;
+  --green: #8cda93;
 }

@@ -16,9 +16,9 @@ exports.handler = async event => {
     }
   }
 
-  const doesDocExist = await client.query(
-    q.Exists(q.Match(q.Index('books_by_isbn'), book.isbn))
-  )
+  const doesDocExist = book.isbns.forEach(async isbn => {
+    await client.query(q.Exists(q.Match(q.Index('books_by_isbn'), isbn)))
+  })
 
   if (!doesDocExist) {
     return {
@@ -46,7 +46,8 @@ exports.handler = async event => {
         data: {
           title: book.title,
           authors: book.authors,
-          isbn: book.isbn,
+          isbns: book.isbns,
+          publisher: book.publisher,
           pageCount: book.pageCount,
           thumbnail: book.thumbnail,
           entries: []
@@ -62,7 +63,7 @@ exports.handler = async event => {
     body: JSON.stringify({
       message: `${book.title} by ${book.authors.join(
         ', '
-      )} successfully added!`,
+      )} successfully added to collection!`,
       addedBook
     })
   }

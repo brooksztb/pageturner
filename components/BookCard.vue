@@ -37,7 +37,11 @@
         <span></span>
       </div>
       <div class="flex items-end w-full">
-        <nuxt-link class="pageturner-button" :to="bookUrl"
+        <nuxt-link
+          class="pageturner-button"
+          :to="bookUrl"
+          tabindex="0"
+          role="button"
           >View Book Info</nuxt-link
         >
       </div>

@@ -13,22 +13,35 @@ module.exports = {
       'accent-2': 'var(--accent-2)',
       'accent-3': 'var(--accent-3)',
       'white': 'var(--white)',
+      'black': 'var(--black)',
+      'red': 'var(--red)',
+      'green': 'var(--green)',
       'transparent': 'transparent'
     },
     extend: {
       zIndex: {
-        '100': '100'
+        '99': '99',
+        '100': '100',
+        '1000': '1000'
       },
       spacing: {
         '300px': '300px',
         '400px': '400px',
+        '500px': '500px',
         '1/2': '50%'
       },
       minHeight: {
         '300px': '300px'
       },
+      maxHeight: {
+        '550px': '550px'
+      },
+      minWidth: {
+        '320px': '320px'
+      },
       maxWidth: {
-        '400px': '400px'
+        '400px': '400px',
+        '500px': '500px'
       },
       backgroundPosition: {
         'none-none': '0% 0%',
@@ -36,9 +49,14 @@ module.exports = {
       },
       backgroundImage: {
         'book-gradient-to-r':
-          'linear-gradient(to right, rgba(245, 154, 0,.2) 0%, #191919 60%, #191919 100%)',
+          'linear-gradient(to right, rgba(245, 154, 0,.2) 0%, var(--black) 60%, var(--black) 100%)',
         'book-gradient-to-b':
-          'linear-gradient(to bottom, rgba(245, 154, 0,.2) 0%, #191919 60%, #191919 100%)'
+          'linear-gradient(to bottom, rgba(245, 154, 0,.2) 0%, var(--black) 60%, var(--black) 100%)',
+        'modal-gradient':
+          'linear-gradient(to bottom, rgba(245, 154, 0,.2) 0%, var(--primary) 60%, var(--primary) 100%)'
+      },
+      pointerEvents: {
+        'all': 'all'
       },
       transition: {
         'border-color': 'border-color'

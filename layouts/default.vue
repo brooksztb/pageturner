@@ -2,10 +2,7 @@
   <div class="min-h-screen text-white bg-primary">
     <the-header />
     <the-navigation />
-    <main
-      id="content"
-      class="relative pt-8 pb-24 divide-y md:pb-8 divide-secondary"
-    >
+    <main id="content" class="relative pt-8 pb-24 divide-y md:pb-8 md:pt-12">
       <div class="max-w-6xl px-4 mx-auto sm:px-6 lg:px-8">
         <nuxt keep-alive />
       </div>

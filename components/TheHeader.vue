@@ -2,8 +2,8 @@
   <header
     class="flex flex-col items-center justify-center px-4 mx-auto sm:px-6 lg:px-8"
   >
-    <h1 class="text-secondary text-3xl">Pageturner</h1>
-    <div class="text-white text-lg">
+    <h1 class="text-6xl text-secondary">Pageturner</h1>
+    <div class="text-base text-white">
       Track your Reading Habits
     </div>
   </header>

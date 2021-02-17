@@ -6,6 +6,7 @@ exports.handler = async event => {
   })
 
   const { isbn } = event.queryStringParameters
+
   if (!isbn) {
     return {
       statusCode: 400,
