@@ -18,15 +18,13 @@ export const actions = {
     }
   },
   async addNewBook({ commit }, book) {
-    const response = await this.$axios.$post(
-      '/.netlify/functions/add_book',
-      book
-    )
-
-    if (response && response.addedBook) {
-      commit('ADD_BOOK', response.addedBook)
-      return response.message
-    }
+    const response = await this.$axios
+      .$post('/.netlify/functions/add-book', book)
+      .then(res => {
+        if (res && res.data.insert_books_one) {
+          commit('ADD_BOOK', res.data.insert_books_one)
+        }
+      })
   }
 }
 

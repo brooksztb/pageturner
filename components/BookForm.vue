@@ -85,8 +85,7 @@ export default {
         authors: [],
         isbn: '',
         pageCount: 0,
-        thumbnail: '',
-        entries: []
+        thumbnail: ''
       }
     }
   },
