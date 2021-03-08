@@ -21,8 +21,8 @@ export const actions = {
     const response = await this.$axios
       .$post('/.netlify/functions/add-book', book)
       .then(res => {
-        if (res && res.data.insert_books_one) {
-          commit('ADD_BOOK', res.data.insert_books_one)
+        if (res && res.data.addedBook) {
+          commit('ADD_BOOK', res.data.addedBook)
         }
       })
   }
