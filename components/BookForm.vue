@@ -39,14 +39,31 @@
         />
       </div>
     </label>
-    <label for="isbn" class="flex flex-col py-2">
-      <span class="pb-1">* ISBN (10/13)</span>
-      <input
-        id="isbn"
-        class="px-2 py-1 text-white border bg-primary border-accent-3"
-        v-model="book.isbn"
-        type="text"
-      />
+    <label for="isbns" class="flex flex-col py-2">
+      <span class="pb-1">* ISBN(s) (10/13)</span>
+      <div
+        class="w-full px-3 py-1 text-white border bg-primary border-accent-3"
+      >
+        <div
+          v-for="(isbn, index) in book.isbns"
+          :key="isbn"
+          class="inline-block px-2 mr-2 text-primary bg-accent-3"
+        >
+          <span class="opacity-75 cursor-pointer" @click="removeIsbn(index)"
+            >x</span
+          >
+          {{ isbn }}
+        </div>
+        <input
+          id="isbns"
+          class="border-none outline-none bg-primary"
+          placeholder="Enter an ISBN"
+          type="text"
+          @keydown.enter="addIsbn"
+          @keydown.188="addIsbn"
+          @keydown.delete="removeLastIsbn"
+        />
+      </div>
     </label>
     <label for="pageCount" class="flex flex-col py-2">
       <span class="pb-1">* Page Count</span>
@@ -83,15 +100,23 @@ export default {
       book: {
         title: '',
         authors: [],
-        isbn: '',
-        pageCount: 0,
+        isbns: [],
+        page_count: 0,
         thumbnail: ''
       }
     }
   },
   methods: {
-    addBook() {
-      this.$emit('add', this.book)
+    async addBook() {
+      // this.$emit('add', this.book)
+      await fetch('/.netlify/functions/add-book', {
+        method: 'POST',
+        body: JSON.stringify(this.book)
+      })
+        .then(res => console.log(res.json()))
+        .catch(err => {
+          console.log(err)
+        })
     },
     addAuthor(event) {
       event.preventDefault()
@@ -107,6 +132,22 @@ export default {
     removeLastAuthor(event) {
       if (event.target.value.length === 0) {
         this.removeAuthor(this.book.authors.length - 1)
+      }
+    },
+    addIsbn(event) {
+      event.preventDefault()
+      var val = event.target.value.trim()
+      if (val.length > 0) {
+        this.book.isbns.push(val)
+        event.target.value = ''
+      }
+    },
+    removeIsbn(index) {
+      this.book.isbns.splice(index, 1)
+    },
+    removeLastIsbn(event) {
+      if (event.target.value.length === 0) {
+        this.removeAuthor(this.book.isbns.length - 1)
       }
     }
   }

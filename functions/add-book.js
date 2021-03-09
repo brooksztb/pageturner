@@ -9,7 +9,7 @@ exports.handler = async event => {
 
   const data = await hasuraRequest({
     query: `
-        mutation AddBook($book: book_insert_input = {}) {
+        mutation AddBook($book: books_insert_input = {}) {
             addedBook: insert_books_one(object: $book) {
                 id
                 title
@@ -27,6 +27,12 @@ exports.handler = async event => {
 
   return {
     statusCode: 200,
-    body: JSON.stringify(data)
+    // headers: {
+    //   'Access-Control-Allow-Origin': '*',
+    //   'Access-Control-Allow-Methods': 'POST',
+    //   'Access-Control-Allow-Headers': 'Content-Type',
+    //   'Content-Type': 'application/json'
+    // },
+    body: JSON.stringify(data.addedBook)
   }
 }

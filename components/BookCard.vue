@@ -14,7 +14,7 @@
         <h4 class="text-lg text-white">{{ authors }}</h4>
         <div class="flex justify-between">
           <span class="text-white opacity-75 text-md"
-            >{{ completedPages }}/{{ book.pageCount }} Pages</span
+            >{{ completedPages }}/{{ book.page_count }} Pages</span
           >
           <div>
             <span class="text-white opacity-75 text-md">
@@ -64,23 +64,22 @@ export default {
         : null
     },
     completedPages() {
-      return this.latestEntry && this.latestEntry.endPage
-        ? this.latestEntry.endPage
+      return this.latestEntry && this.latestEntry.pages
+        ? this.latestEntry.pages
         : 0
     },
     completionPercentage() {
-      const totalPages = this.book.pageCount || 0
-      if (this.latestEntry && this.latestEntry.endPage && totalPages > 0) {
-        let percentage = (
-          (this.latestEntry.endPage / totalPages) *
-          100
-        ).toFixed(2)
+      const totalPages = this.book.page_count || 0
+      if (this.latestEntry && this.latestEntry.pages && totalPages > 0) {
+        let percentage = ((this.latestEntry.pages / totalPages) * 100).toFixed(
+          2
+        )
         return percentage
       }
       return '0'
     },
     isCompleted() {
-      return this.completedPages === this.book.pageCount ? true : false
+      return this.completedPages === this.book.page_count ? true : false
     },
     isReading() {
       return this.completedPages > 0 && !this.isCompleted ? true : false

@@ -48,7 +48,7 @@
               <span class="sr-only">Close</span>
               <fa :icon="['fas', 'times']" size="2x" />
             </button>
-            <book-form @cancel="toggleManualView" @add="addBook" />
+            <book-form @cancel="toggleManualView" @add="addBook(event)" />
           </div>
         </div>
         <div
@@ -76,8 +76,8 @@ export default {
     toggleManualView() {
       this.manualView = !this.manualView
     },
-    addBook() {
-      const addedBookMessage = this.$store.dispatch('addNewBook')
+    addBook(book) {
+      const addedBookMessage = this.$store.dispatch('addNewBook', book)
 
       if (addedBookMessage) {
         this.message = addedBookMessage

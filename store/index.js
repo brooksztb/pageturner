@@ -9,22 +9,19 @@ export const state = () => ({
 
 export const actions = {
   async fetchAllBooks({ commit }) {
-    const { allBooks } = await this.$axios.$get(
-      '/.netlify/functions/fetch_all_books'
-    )
-
-    if (allBooks && allBooks.length > 0) {
-      commit('SET_BOOKS', allBooks)
-    }
+    await this.$axios.$get('/.netlify/functions/load-books').then(books => {
+      console.log(books)
+      if (books && books.length > 0) {
+        commit('SET_BOOKS', res.data.books)
+      }
+    })
   },
   async addNewBook({ commit }, book) {
-    const response = await this.$axios
-      .$post('/.netlify/functions/add-book', book)
-      .then(res => {
-        if (res && res.data.addedBook) {
-          commit('ADD_BOOK', res.data.addedBook)
-        }
-      })
+    await this.$axios.$post('/.netlify/functions/add-book', book).then(res => {
+      if (res && res.data.addedBook) {
+        commit('ADD_BOOK', res.data.addedBook)
+      }
+    })
   }
 }
 

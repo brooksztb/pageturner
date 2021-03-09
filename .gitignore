@@ -10,9 +10,6 @@ npm-debug.log
 # Nuxt generate
 dist
 
-package-lock.json
-yarn.lock
-
 .env
 .env.*
 # Local Netlify folder

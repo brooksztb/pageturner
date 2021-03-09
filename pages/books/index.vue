@@ -13,15 +13,23 @@ import BookCard from '~/components/BookCard.vue'
 import BookSearch from '~/components/BookSearch.vue'
 
 export default {
-  computed: {
-    books() {
-      return this.$store.getters.getAllBooksByTitle || []
-    }
+  async asyncData({ $axios }) {
+    const { books } = await $axios.$get('/.netlify/functions/load-books')
+
+    return { books }
   },
-  components: { BookCard, BookSearch },
-  mounted() {
-    this.$store.dispatch('fetchAllBooks')
-  }
+  // computed: {
+  //   books() {
+  //     return this.$store.getters.getAllBooksByTitle || []
+  //   }
+  // },
+  components: { BookCard, BookSearch }
+  // mounted() {
+  //   this.$store.dispatch('fetchAllBooks')
+  // }
+  // beforeMount() {
+  //   this.$store.dispatch('fetchAllBooks')
+  // }
 }
 </script>
 
